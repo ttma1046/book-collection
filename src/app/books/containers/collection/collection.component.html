@@ -1,0 +1,7 @@
+<bc-add-book (addBook)="bookService.addBook($event)"></bc-add-book>
+<div *ngIf="bookService.bookCollection$ | async as bookCollection">
+  <mat-card id="book-count">
+    <mat-card-title>Book List ({{ bookCollection.books.length }})</mat-card-title>
+  </mat-card>
+  <bc-book-list [books]="bookCollection.books"></bc-book-list>
+</div>

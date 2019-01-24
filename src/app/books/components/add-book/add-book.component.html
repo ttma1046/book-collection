@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>
+    Add Book
+  </mat-card-title>
+  <mat-card-content>
+    <form class="book-form" [formGroup]="bookForm" (ngSubmit)="onFormSubmit()" #formDirective="ngForm">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Title" formControlName="title" maxlength="30" id="title">
+        <mat-error *ngIf="title.invalid">{{titleErrorMessage}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Category" formControlName="category" id="category">
+          <mat-option value="drama">drama</mat-option>
+          <mat-option value="comedy">comedy</mat-option>
+          <mat-option value="sport">sport</mat-option>
+        </mat-select>
+        <mat-error *ngIf="category.invalid">{{categoryErrorMessage}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description" id="description"></textarea>
+        <mat-error *ngIf="description.invalid">{{descriptionErrorMessage}}</mat-error>
+      </mat-form-field>
+      <button [disabled]="bookForm.invalid" type="submit" mat-raised-button color="primary">Add</button>
+    </form>
+  </mat-card-content>
+</mat-card>
